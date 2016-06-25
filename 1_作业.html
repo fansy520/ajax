@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script type="text/javascript" src="../public.js"></script>
+<script type="text/javascript">
+    /**
+     * 1.	验证手机号是否有效
+             假设: 第一位 1  第二位 3,5,8,其他为是数字
+     */
+
+    var tel = '13388160161'
+    var regexp = /^1[358]\d{9}$/;
+    d(regexp.test(tel));
+
+
+    /**
+     * 验证邮箱是否有效
+     */
+    var email = 'g...gz@itsource.com.cn'
+    var regexp = /^\w+@\w+(\.\w+)+/;
+
+    var regexp = /^\w+[\w.]*@\w+(\.\w+)+/;
+
+    d(email.indexOf("@")!==-1);  //只检查字符串中是否有@
+
+    d(regexp.test(email))
+
+
+    /**
+     * 面试题:
+     */
+    var str = "IT面试题博客中包含很多  <a href='http://hi.baidu.com/mianshiti/blog/category/微软面试题'> 微软面试题 </a>";
+    var regexp = /<a href='(.+)'>/g;
+
+     //>>1.匹配完成之后取出第一个子表达式的值
+//    d(str.match(regexp));
+//    d(RegExp.$1);
+
+    //>>2.
+    // 2.1 先匹配出来
+    var arr = str.match(regexp);
+    d(arr);  //
+    // 使用替换,  将第一个子表达式的内容提供到整个字符串
+    var str =  arr[0].replace(regexp,"$1");
+    d(str);
+
+
+
+
+
+    //>>2.
+
+   var str ='这是一个Javascript代码块：<script type="text/javascript">\
+            alert(1);\
+<\/script>需要在浏览器中运行。';
+    console.debug(str);
+  var regexp =/<(script).*<\/\1>/g;
+
+    d(str.replace(regexp,''));
+
+
+    //>>3.
+    var date = '08/26/2003'
+//    var regexp = /^((0[1-9])|(1[0-2]))\//;
+    var regexp = /^(\d{2})\/(\d{2})/;
+    d(date.replace(regexp,'$2/$1'));
+
+</script>
+</body>
+</html>

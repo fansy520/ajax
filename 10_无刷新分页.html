@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>无刷新分页</h1>
+<div id="result"></div>
+
+<script type="text/javascript" src="../public.js"></script>
+<script type="text/javascript">
+    /**
+     * 请求url地址
+     * @param url
+     */
+    function showPage(url){
+            var result = $('result');
+            //>>1.创建ajax对象
+            var ajax = createAjax();
+
+            //>>2.设置ajax的请求方式和请求地址
+            ajax.open('GET',url);
+
+
+            //>>3.等待接收响应内容
+            ajax.onreadystatechange = function(){
+                if(ajax.readyState ==4 && ajax.status==200){
+                    result.innerHTML = ajax.responseText;
+                }
+            }
+
+            //>>4.发送请求
+            ajax.send();
+    }
+
+
+
+
+    window.onload = function(){
+        showPage("11_getpage.php");
+    }
+</script>
+</body>
+</html>
